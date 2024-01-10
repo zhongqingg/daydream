@@ -1,0 +1,3 @@
+[submodule "daydream/themes/paper"]
+	path = daydream/themes/paper
+	url = https://github.com/nanxiaobei/hugo-paper
