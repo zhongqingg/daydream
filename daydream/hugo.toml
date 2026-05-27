@@ -1,3 +1,32 @@
 baseURL = 'https://zhongqingg.github.io/'
 languageCode = 'en-us'
-title = 'My New Hugo Site donchy'
+title = 'Donchy'
+theme = 'paper'
+[params]
+  color = 'linen'
+  [params.comment]
+    enable = true
+    [params.comment.valine]
+      enable = true
+      appId = 'sJvSij7jzvvMMjKB3ABRx8lU-gzGzoHsz'
+      appKey = 'u02pUtYMQKAzX93N2CKIbjDi'
+      notify = false  # mail notifier , https://github.com/xCss/Valine/wiki
+      verify = false # Verification code
+      avatar = 'mm'
+      placeholder = '说点什么吧...'
+      visitor = true
+      recordIP = true
+
+[menues]
+    [[menus.main]]
+    name = '生活'
+    pageRef = '/post'
+    weight = 10
+    [[menus.main]]
+    name = '工作'
+    pageRef = '/work'
+    weight = 20
+    [[menus.main]]
+    name = '学术'
+    pageRef = '/paper'
+    weight = 30

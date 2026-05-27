@@ -1,0 +1,11 @@
+[1]
+    Name = "Blogs Posts"
+    Title = "Show list of posts"
+    URL = "/post" 
+[2]
+    Name = "Blog Tags"
+    Title = "Show list of tags"
+    URL = "/tags"
+[3]
+    Name = "About Me"
+    URL = "/categories"

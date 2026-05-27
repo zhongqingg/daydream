@@ -26,6 +26,19 @@ title = "Paper"
   bio = 'Discover fresh context'
 # ------------------------------
 
+  [params.comment]
+    enable = true
+    [params.comment.valine]
+      enable = true
+      appId = 'sJvSij7jzvvMMjKB3ABRx8lU-gzGzoHsz'
+      appKey = 'u02pUtYMQKAzX93N2CKIbjDi'
+      notify = false  # mail notifier , https://github.com/xCss/Valine/wiki
+      verify = false # Verification code
+      avatar = 'mm'
+      placeholder = '说点什么吧...'
+      visitor = true
+      recordIP = true
+
 # needed to  render raw HTML (e.g. <sub>, <sup>, <kbd>, <mark>)
 [markup]
   [markup.goldmark]
