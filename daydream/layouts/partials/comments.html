@@ -1,23 +1,50 @@
-<!-- valine -->
-{{- if .Site.Params.valine.enable -}}
-<!-- id 将作为查询条件 -->
+<!-- Waline 评论框容器 -->
+<div id="waline"></div>
 
-<div id="vcomments"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<!-- 引入 Waline 样式 -->
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
 
-<script type="text/javascript">
-  new Valine({
-      el: '#vcomments' ,
-      appId: '{{ .Site.Params.valine.appId }}',
-      appKey: '{{ .Site.Params.valine.appKey }}',
-      notify: '{{ .Site.Params.valine.notify }}', 
+<!-- 引入 Waline 脚本并初始化 -->
+<script type="module">
+  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
 
-      verify: '{{ .Site.Params.valine.verify }}', 
-      avatar:'{{ .Site.Params.valine.avatar }}', 
-      placeholder: '{{ .Site.Params.valine.placeholder }}',
-      visitor: '{{ .Site.Params.valine.visitor }}'
-
+  init({
+    el: '#waline',
+    // ⚠️ 注意：下面这里必须换成你刚刚在 Netlify 部署并拼出来的完整地址
+    serverURL: 'https://zhongqinggblog.netlify.app/.netlify/functions/comment/',
+    lang: 'zh-CN',
+    // 适配 Hugo-paper 的暗黑模式
+    dark: 'html[class="dark"], html[data-theme="dark"]', 
+    emoji: [
+      'https://unpkg.com/@waline/emojis@1.2.0/weibo',
+      'https://unpkg.com/@waline/emojis@1.2.0/bilibili',
+    ],
+    // 可选：设置必填项，比如这里设置评论者必须填昵称
+    pageview: true,
+    requiredMeta: ['nick'],
+    locale: { placeholder: '寒来暑往，秋收冬藏……' },
   });
 </script>
-{{- end -}}
+
+<style>
+#waline {
+  margin-top: 2rem;
+  --waline-theme-color: #8B7E6B;
+  --waline-active-color: #6B5F4E;
+  --waline-text-color: #5C5142;
+  --waline-bgcolor: #FAF8F1;
+  --waline-bgcolor-light: #F5F0E6;
+  --waline-bgcolor-hover: #F0ECD8;
+  --waline-border-color: #E0DAC8;
+  --waline-white: #FAF8F1;
+  --waline-light-grey: #E0DAC8;
+  --waline-header-number: #8B7E6B;
+}
+#waline .wl-header .wl-header-item label { color: #5C5142; }
+
+#waline .wl-preview { background: #F5F0E6; }
+#waline .wl-card { background: #FAF8F1; }
+#waline .wl-count { color: #8B7E6B; }
+.wl-btn { border-radius: 6px !important; }
+.wl-btn:hover { opacity: 0.85; }
+</style>

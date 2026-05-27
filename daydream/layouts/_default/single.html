@@ -1,9 +1,6 @@
 {{ define "main" }}
 
 <article>
-  <head>
-    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-  </head>
   <header class="mb-16">
     <h1 class="!my-0 pb-2.5">{{ .Title }}</h1>
 
@@ -23,25 +20,12 @@
   </header>
 
   <section>{{ .Content }}</section>
-  <section>
-  <span id="{{ .RelPermalink }}" class="leancloud_visitors" data-flag-title="{{ .Title }}">
-    <em class="post-meta-item-text">阅读量 </em>
-    <i class="leancloud-visitors-count">1000000</i>
-  </span>
+
+  <section class="text-sm antialiased opacity-60 mb-4">
+    阅读量 <span class="waline-pageview-count" data-path="{{ .RelPermalink }}"></span>
   </section>
-  <section>
-    <div id="vcomments"></div>
-    <script>
-        new Valine({
-            el: '#vcomments',
-            appId: 'sJvSij7jzvvMMjKB3ABRx8lU-gzGzoHsz',
-            appKey: 'u02pUtYMQKAzX93N2CKIbjDi',
-	    visitor: true,
-	    avatar: 'monsterid',
-	    placeholder: '寒来暑往，秋收冬藏......'
-        })
-    </script>
-  </section>
+
+  {{- partial "comments.html" . -}}
 
 
   <!-- Post Tags -->
