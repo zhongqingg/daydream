@@ -25,7 +25,7 @@ jobs:
 
       - uses: peaceiris/actions-gh-pages@v4
         with:
-          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          personal_token: ${{ secrets.PAT }}
           external_repository: zhongqingg/zhongqingg.github.io
           publish_branch: main
           publish_dir: ./daydream/daydream/public
