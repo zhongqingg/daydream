@@ -1,5 +1,6 @@
 name: Deploy Hugo to GitHub Pages
 
+# 触发条件：向 main 分支推送代码，或手动在 Actions 页面运行
 on:
   push:
     branches: [main]
@@ -8,24 +9,30 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
+    # 所有 run 步骤的工作目录（相对仓库根目录）
     defaults:
       run:
         working-directory: ./daydream
 
     steps:
+      # 1. 拉取源码（必须拉取 submodule，否则 themes/paper 为空）
       - uses: actions/checkout@v4
         with:
           submodules: recursive
 
+      # 2. 在云端安装指定版本的 Hugo
       - uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.139.2'
+          hugo-version: '0.139.2'   # 请与本机 Hugo 版本保持一致
 
+      # 3. 执行构建（工作目录为 ./daydream，输出到 ./daydream/public/）
       - run: hugo --minify
 
+      # 4. 将 ./daydream/public/ 推送到部署仓库
       - uses: peaceiris/actions-gh-pages@v4
         with:
-          personal_token: ${{ secrets.PAT }}
-          external_repository: zhongqingg/zhongqingg.github.io
-          publish_branch: main
-          publish_dir: ./daydream/public
+          personal_token: ${{ secrets.PAT }}            # GitHub 生成的 Personal Access Token
+          external_repository: zhongqingg/zhongqingg.github.io  # 目标部署仓库
+          publish_branch: main                          # 部署仓库的目标分支
+          publish_dir: ./daydream/public                # Hugo 构建产物的路径（相对仓库根目录）
