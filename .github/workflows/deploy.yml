@@ -26,4 +26,4 @@ jobs:
           deploy_key: ${{ secrets.DEPLOY_KEY }}
           external_repository: zhongqingg/zhongqingg.github.io
           publish_branch: main
-          publish_dir: ./daydream/public
+          publish_dir: ./daydream/daydream/public
