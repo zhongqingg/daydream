@@ -5,6 +5,10 @@ theme = 'paper'
 [params]
   color = 'linen'
 
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+
 [menu]
   [[menu.main]]
     name = '生活'
