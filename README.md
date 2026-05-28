@@ -19,6 +19,7 @@ daydream/
 ## 本地开发
 
 ```bash
+# 本地启动预览
 hugo server
 ```
 
