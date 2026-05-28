@@ -28,4 +28,4 @@ jobs:
           personal_token: ${{ secrets.PAT }}
           external_repository: zhongqingg/zhongqingg.github.io
           publish_branch: main
-          publish_dir: ./daydream/daydream/public
+          publish_dir: ./daydream/public
